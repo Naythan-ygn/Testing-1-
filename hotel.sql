@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308:3308
--- Generation Time: May 30, 2024 at 05:40 PM
--- Server version: 10.4.27-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: Jun 13, 2024 at 09:31 PM
+-- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,10 +40,10 @@ CREATE TABLE `hotel` (
 --
 
 INSERT INTO `hotel` (`id`, `name`, `city`, `rating`, `picture`) VALUES
-(3, 'Lottel Hotel', 'Yangon', 4, 'images (2).jfif'),
-(4, 'Novotel Yangon Max', 'Yangon', 5, 'novotel_frontview.jpg'),
-(5, 'Navy Hotel', 'Mandalay', 3, '251945074.jpg'),
-(6, 'Hotel SkyHigh', 'Nay Pyi Taw', 5, 'images (3).jfif');
+(3, 'Lottel Hotel', 'Mandalay', 3, 'istockphoto-472899538-612x612.jpg'),
+(4, 'Novotel Yangon Max', 'Yangon', 4, 'novotel_frontview.jpg'),
+(5, 'Navy Hotel', 'Mandalay', 3, 'yangon-hotel.jpg'),
+(6, 'Hotel SkyHigh', 'Nay Pyi Taw', 5, 'DubaiMansion.jpg');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +63,7 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
