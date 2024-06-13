@@ -1,5 +1,6 @@
 <?php
-$server = 'localhost:3308';
+// port number can be changed according to different server machine
+$server = 'localhost:3306';
 $user = 'root';
 $pass = '';
 $DB = 'hotel';

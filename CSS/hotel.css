@@ -89,6 +89,7 @@ input[type="submit"]:hover {
     width: 100%;
 }
 
+/* To place the action buttons side-by-side */
 .action {
     display: flex;
     justify-content: space-between;
@@ -96,32 +97,23 @@ input[type="submit"]:hover {
     margin-top: 20px;
 }
 
-.action button {
+/* This is for 2 action buttons (Edit & Delete) */
+.action a {
     border: 1px solid #000;
     border-radius: 20px;
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 15px;
     font-weight: 600;
-    color: #000;
     cursor: pointer;
     transition: 0.5s all ease-in-out;
-}
-
-.action button a {
     text-decoration: none;
     color: #000;
-    font-size: 15px;
-    font-weight: 600;
     line-height: 28px;
-    transition: 0s linear;
     width: 100%;
 }
 
-.action button a:hover {
-    color: #fff;
-}
-
-.action button:hover {
+.action a:hover {
     background-color: #000;
+    color: #fff;
 }

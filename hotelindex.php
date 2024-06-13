@@ -28,44 +28,6 @@ if (isset($_POST['btnCreate'])) {
     }
 }
 
-// the related data row will be updated when Update button is clicked
-if (isset($_POST['btnEdit'])) {
-    $id = $_POST['hid'];
-    $name = $_POST['hname'];
-    $add = $_POST['hcity'];
-    $hrate = $_POST['rating'];
-    $sql_update = "UPDATE hotel SET name = '$name', city = '$add', rating = '$hrate' WHERE id = '$id'";
-    $result_query = $conn->query($sql_update);
-    if ($result_query) {
-        echo "<script>alert('Hotel Updated');</script>";
-        header("Location: hotelindex.php");
-    } else {
-        echo "Error: " . $sql_update . "<br>" . $conn->error;
-    }
-}
-
-// the related data row will be deleted when Delete button is clicked
-if (isset($_GET['delete_id'])) {
-    $id = $_GET['delete_id'];
-    $sql = "DELETE FROM hotel WHERE id = $id";
-    $result = $conn->query($sql);
-
-    if ($result) {
-        echo "Deleted Successfully";
-        header("Location: hotelindex.php");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-// the id of the row will be selected (and show in url) when Edit button is clicked
-if (isset($_GET['edit_id'])) {
-    $Eid = $_GET['edit_id'];
-    $sql = "SELECT * FROM hotel WHERE id = $Eid";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-}
-
 $sql = "SELECT * FROM hotel";
 $result = $conn->query($sql);
 
@@ -91,36 +53,29 @@ $result = $conn->query($sql);
                 <input type="hidden" name="hid" value="<?php echo (isset($row['id']) ? $row['id'] : ""); ?>">
 
                 <input type="text" name="hname" placeholder="Hotel Name" value="<?php echo (isset($row['name']) ? $row['name'] : ""); ?>" required>
+
                 <input type="text" name="hcity" value="<?php echo (isset($row['city']) ? $row['city'] : ""); ?>" placeholder="Hotel's Location (City)">
+
                 <select name="rating" id="hrate">
                     <?php
                     if (isset($_GET['edit_id'])) {
                     ?>
-                        <option value="<?php echo ($row['rating']); ?>"><?php echo ($row['rating']); ?></option>                    
+                        <option value="<?php echo ($row['rating']); ?>"><?php echo ($row['rating']); ?></option>
                     <?php
                     } else {
                     ?>
-                    <option selected disabled hidden>---- Select Rating ----</option>
-                    <?php }?>
+                        <option selected disabled hidden>---- Select Rating ----</option>
+                    <?php } ?>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
+
                 <input type="file" name="hfile">
 
-                <?php if (isset($_GET['edit_id'])) {
-                ?>
-                    <input type="submit" class="form-control" name="btnEdit" value="Update Hotel">
-
-                <?php
-                } else {
-                ?>
-                    <input type="submit" class="form-control" name="btnCreate" value="Create Hotel">
-                <?php
-                }
-                ?>
+                <input type="submit" class="form-control" name="btnCreate" value="Create Hotel">
             </fieldset>
         </form>
     </div>
@@ -152,18 +107,14 @@ $result = $conn->query($sql);
                             <p><?php echo $row['city']; ?> , Rating : <?php echo $row['rating']; ?> <i class="fi fi-ss-star"></i></p>
 
                             <div class="action">
-                                <button>
-                                    <a href="hotelindex.php?edit_id=<?php echo $row['id']; ?>">
-                                        <i class="fi fi-rr-edit"></i>
-                                        &nbsp;Edit
-                                    </a>
-                                </button>
-                                <button>
-                                    <a href="hotelindex.php?delete_id=<?php echo $row['id']; ?>">
-                                        <i class="fi fi-rr-trash"></i>
-                                        &nbsp;Delete
-                                    </a>
-                                </button>
+                                <a href="edithotel.php?edit_id=<?php echo $row['id']; ?>">
+                                    <i class="fi fi-rr-edit"></i>
+                                    &nbsp;Edit
+                                </a>
+                                <a href="deletehotel.php?delete_id=<?php echo $row['id']; ?>">
+                                    <i class="fi fi-rr-trash"></i>
+                                    &nbsp;Delete
+                                </a>
 
                             </div>
 
